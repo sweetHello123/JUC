@@ -6,10 +6,10 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @Author: china wu
- * @Description: 线程间的通信：生产者消费者问题
+ * @Description: 线程间的通信：生产者消费者问题(Lock版)
  * @Date: 2020/8/30 13:42
  */
-public class ProvicderAndConsumer {
+public class ProviderAndConsumer {
 
     private int num = 0;
 
