@@ -8,10 +8,12 @@ import java.util.concurrent.TimeUnit;
  * @Date: 2020/8/31 13:01
  */
 public class Test2 {
+
     public static void main(String[] args) {
         // 两个不同的对象执行方法是不同的锁
         Phone phone1 = new Phone();
         Phone phone2 = new Phone();
+
 
         new Thread(() -> {
             // 该方法延时了3s，所以后执行
