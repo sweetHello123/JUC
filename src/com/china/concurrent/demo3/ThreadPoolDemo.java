@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @Author: china wu
- * @Description:
+ * @Description: 线程池的实际创建方式
  * @Date: 2020/10/15 0:02
  */
 public class ThreadPoolDemo {
@@ -25,7 +25,7 @@ public class ThreadPoolDemo {
                 new LinkedBlockingDeque<>(3),
                 // 工作线程的线程工厂
                 Executors.defaultThreadFactory(),
-                // 拒绝策略
+                // 拒绝策略(拒绝其他线程进入线程池的机制)
                 new ThreadPoolExecutor.DiscardOldestPolicy()
         );
 
@@ -37,4 +37,3 @@ public class ThreadPoolDemo {
         threadPoolExecutor.shutdown();
     }
 }
-
