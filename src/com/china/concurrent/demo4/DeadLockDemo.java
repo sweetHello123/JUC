@@ -9,13 +9,13 @@ import java.util.concurrent.TimeUnit;
  */
 public class DeadLockDemo {
 
-    private static Object object1 = new Object();
+    private static Object o1 = new Object();
 
-    private static Object object2 = new Object();
+    private static Object o2 = new Object();
 
     public static void main(String[] args) {
         new Thread(() -> {
-            synchronized (object1) {
+            synchronized (o1) {
                 System.out.println(Thread.currentThread().getName() + "拿到锁1");
                 try {
                     //让当前线程睡眠，保证让另一线程得到o2，防止这个线程启动一下连续获得o1和o2两个对象的锁。
@@ -23,16 +23,16 @@ public class DeadLockDemo {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                synchronized (object2) {
+                synchronized (o2) {
                     System.out.println(Thread.currentThread().getName() + "尝试获得锁2");
                 }
             }
         }, "线程1").start();
 
         new Thread(() -> {
-            synchronized (object2) {
+            synchronized (o2) {
                 System.out.println(Thread.currentThread().getName() + "拿到锁2");
-                synchronized (object1) {
+                synchronized (o1) {
                     System.out.println(Thread.currentThread().getName() + "尝试获得锁1");
                 }
             }
